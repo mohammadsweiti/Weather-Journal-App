@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+projectData = [];
 
 // Require Express to run server and routes
 const express = require('express');
@@ -26,20 +26,26 @@ const server = app.listen(port,()=>{
     console.log(`port running in port whis is ${port}`);
     
 });
-
-app.get('/generalthing',(request,response)=>{
-    response.send(projectData);
+app.get('/', (request, response) => {
+    response.send('Server is running!');
 });
 
-app.post('/generalthing',(request,response)=>{
-    console.log(`server data is ${request.body}`);
+
+app.get('/generalthing',(request,response)=>{
+    console.log('Sending project data:', projectData);
+    response.status(200).send(projectData);
+});
+
+app.post('/addgeneralthing',(request,response)=>{
+    console.log(`server data is ${JSON.stringify(request.body)}`);
     const newObject ={
         date : request.body.date,
         temperature : request.body.temperature,
-        feeling : request.body.feeling
-    }
+        content: request.body.content
+    }  
     projectData.push(newObject);
-    response.send(projectData);   
+
+    response.status(200).send(projectData);   
 })
 
 
