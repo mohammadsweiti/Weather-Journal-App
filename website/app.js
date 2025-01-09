@@ -7,7 +7,7 @@ let d = new Date();
 let newDate = d.getMonth()+1+"/"+ d.getDate()+'/'+ d.getFullYear();
 
 let urlfirst = 'http://api.openweathermap.org/data/2.5/forecast?zip=';
-let APIkey = '&appid=51179c24c05901a71177d986aec4a8ab';
+let APIkey = '&appid=51179c24c05901a71177d986aec4a8ab&units=imperial';
 
 document.getElementById('generate').addEventListener('click',()=>{
     const newzipnmber = document.getElementById('zip').value;
