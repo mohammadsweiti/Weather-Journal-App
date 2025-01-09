@@ -36,17 +36,18 @@ app.get('/generalthing',(request,response)=>{
     response.status(200).send(projectData);
 });
 
-app.post('/addgeneralthing',(request,response)=>{
+app.post('/addData',addData);
+    
+const addData = (req,res)=>{
     console.log(`server data is ${JSON.stringify(request.body)}`);
-    const newObject ={
-        date : request.body.date,
-        temperature : request.body.temperature,
-        content: request.body.content
-    }  
-    projectData.push(newObject);
+    projectData['date']= req.body.date;
+    projectData['temperature']= req.body.temperature;
+    projectData['feelings']= req.body.feelings;
 
-    response.status(200).send(projectData);   
-})
+    res.send(projectData);
+    console.log("the data publised : "+projectData);
+    
+}
 
 
 
