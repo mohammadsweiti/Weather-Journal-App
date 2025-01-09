@@ -4,7 +4,7 @@
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth()+1+"/"+ d.getDate()+'/'+ d.getFullYear();
 
 let urlfirst = 'http://api.openweathermap.org/data/2.5/forecast?zip=';
 let APIkey = '&appid=51179c24c05901a71177d986aec4a8ab';
