@@ -18,7 +18,7 @@ document.getElementById('generate').addEventListener('click',()=>{
             date: newDate ,
             temperature:data.list[0].main.temp,
             content:feeling });
-            nowUpdate();
+            updateUI();
     })
 
 })
@@ -56,12 +56,13 @@ const postWeatherData = async (newurl ='',newdata={})=>{
     
 }
 
-const nowUpdate = async ()=>{
-    const request = await fetch('generalthing');
+const updateUI = async ()=>{
+    const request = await fetch('/all');
     try{
-        const generalData = await request.json();
-        document.getElementById('content').innerHTML = `Feeling = ${generalData[0].content}`;
-        document.getElementById('temp').innerHTML = `Temperature = ${generalData[0].temperature} °K`;
+        const allData = await request.json();
+        document.getElementById('date').innerHTML =allData.date;
+        document.getElementById('content').innerHTML = allData.content;
+        document.getElementById('temp').innerHTML = allData.temp;
 
     }catch(error){
         console.log("there is error which is ",error);
