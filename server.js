@@ -31,23 +31,23 @@ app.get('/', (request, response) => {
 });
 
 
-app.get('/generalthing',(request,response)=>{
+app.get('/generalthing',(req,res)=>{
     console.log('Sending project data:', projectData);
-    response.status(200).send(projectData);
+    res.status(200).send(projectData);
 });
-
-app.post('/addData',addData);
-    
 const addData = (req,res)=>{
-    console.log(`server data is ${JSON.stringify(request.body)}`);
+    console.log(`server data is ${JSON.stringify(req.body)}`);
     projectData['date']= req.body.date;
     projectData['temperature']= req.body.temperature;
-    projectData['feelings']= req.body.feelings;
+    projectData['content']= req.body.content;
 
     res.send(projectData);
-    console.log("the data publised : "+projectData);
+    console.log("the data publised : "+JSON.stringify(projectData));
     
 }
+app.post('/addData',addData);
+    
+
 
 
 
