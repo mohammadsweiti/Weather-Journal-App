@@ -60,9 +60,9 @@ const updateUI = async ()=>{
     const request = await fetch('http://localhost:8855/generalthing');
     try{
         const allData = await request.json();
-        document.getElementById('date').innerHTML =allData.date;
-        document.getElementById('content').innerHTML = allData.content;
-        document.getElementById('temp').innerHTML = allData.temperature;
+        document.getElementById('date').innerHTML =`The date is ${allData.date}`;
+        document.getElementById('content').innerHTML =`Feeling :  ${allData.content}`;
+        document.getElementById('temp').innerHTML = `Temperature : ${allData.temperature}`;
 
     }catch(error){
         console.log("there is error which is ",error);
